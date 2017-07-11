@@ -1,0 +1,50 @@
+Jul 11, 2017 10:12:52 PM fr.epita.iam.services.IdentityJDBCDAO getConnection
+INFO: Connection lost. Re-connecting.
+java.lang.NullPointerException
+	at fr.epita.iam.services.IdentityJDBCDAO.getConnection(IdentityJDBCDAO.java:46)
+	at fr.epita.iam.services.IdentityJDBCDAO.<init>(IdentityJDBCDAO.java:30)
+	at fr.epita.iam.business.CreateActivity.execute(CreateActivity.java:39)
+	at fr.epita.iam.launcher.ConsoleLauncher.handleCreate(ConsoleLauncher.java:123)
+	at fr.epita.iam.launcher.ConsoleLauncher.main(ConsoleLauncher.java:55)
+
+Jul 11, 2017 10:12:54 PM fr.epita.iam.launcher.ConsoleLauncher handleCreate
+INFO: Error when creating new Identity.
+fr.epita.iam.exceptions.DaoInitializationException: Unable to get a connetion to the Database.
+	at fr.epita.iam.services.IdentityJDBCDAO.<init>(IdentityJDBCDAO.java:33)
+	at fr.epita.iam.business.CreateActivity.execute(CreateActivity.java:39)
+	at fr.epita.iam.launcher.ConsoleLauncher.handleCreate(ConsoleLauncher.java:123)
+	at fr.epita.iam.launcher.ConsoleLauncher.main(ConsoleLauncher.java:55)
+Caused by: java.sql.SQLNonTransientConnectionException: java.net.ConnectException : Error connecting to server localhost on port 1,527 with message Connection refused: connect.
+	at org.apache.derby.client.am.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.client.am.SqlException.getSQLException(Unknown Source)
+	at org.apache.derby.jdbc.ClientDriver.connect(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at fr.epita.iam.services.IdentityJDBCDAO.getConnection(IdentityJDBCDAO.java:53)
+	at fr.epita.iam.services.IdentityJDBCDAO.<init>(IdentityJDBCDAO.java:30)
+	... 3 more
+Caused by: ERROR 08001: java.net.ConnectException : Error connecting to server localhost on port 1,527 with message Connection refused: connect.
+	at org.apache.derby.client.net.NetAgent.<init>(Unknown Source)
+	at org.apache.derby.client.net.NetConnection.newAgent_(Unknown Source)
+	at org.apache.derby.client.am.ClientConnection.<init>(Unknown Source)
+	at org.apache.derby.client.net.NetConnection.<init>(Unknown Source)
+	at org.apache.derby.client.net.ClientJDBCObjectFactoryImpl.newNetConnection(Unknown Source)
+	... 8 more
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at javax.net.DefaultSocketFactory.createSocket(Unknown Source)
+	at org.apache.derby.client.net.OpenSocketAction.run(Unknown Source)
+	at org.apache.derby.client.net.OpenSocketAction.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	... 13 more
+
